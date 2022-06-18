@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kart!!</title>
+    <link rel="stylesheet" href="resources/css/signup.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="resources/js/validate.js"></script>
+</head>
+<body background="resources/images/Login1.jpg">
+    <table class="tab">
+        <form >
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" id="fname" name="fname" required></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text" id="lname" name="lname" required></td>
+            </tr>
+            <tr>
+                <td>Mail id</td>
+                <td>
+                    <input type="text" id="mailid" name="mailid" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Phone number 1</td>
+                <td><input type="text" id="phno1" name="phno1" required></td>
+            </tr>
+            <tr>
+                <td>Phone number 2</td>
+                <td><input type="text" id="phno2" name="phno2" ></td>
+            </tr>
+
+            <tr>                
+				<td>Username</td>
+				<td><input type="text" id="username" name="username" required/></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="password" id="password" name="password" required/></td>
+				
+			</tr>
+            <tr>
+				<td>Confirm Password</td>
+				<td><input type="password" id="pwd1" name="pwd1" required/></td>
+				
+			</tr>
+
+            <tr>
+                <td colspan="2" id="error"></td>
+            </tr>
+			<tr>
+				<td></td>
+				<td><button onclick="valid()">Submit</button></td>
+			</tr>
+			<tr>
+				<td colspan="2">Already Have an Account? <button onclick="Login()">Login</button></td>
+			</tr>
+        </form>
+    </table>
+</body>
+</html>

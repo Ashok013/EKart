@@ -1,0 +1,33 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+#tbl
+{
+    margin: 4rem;
+    width: 80%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid rgb(255, 255, 255);
+}
+#tbl td
+{
+    /* border: 1px solid rgb(0, 0, 0); */
+    padding: 0.5rem;
+    background-color: rgb(135, 32, 110);
+    color: white;
+    text-align: center;
+}
+#tbl th
+{
+    /* border: 1px solid rgb(30, 2, 22); */
+    background-color: rgb(0, 0, 0);
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+}
+.btn:hover
+{
+    cursor: pointer;
+}

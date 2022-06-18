@@ -1,0 +1,107 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+body{
+  /* background-image: image('../images/cover.png'); */
+   /* background-color: #ffe48a; */
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-attachment: fixed;
+}
+.main
+{
+    /* width: 100%;
+    
+    background-color: #ffe48a; */
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    /* padding-left: 50px;
+    padding-right: 50px; */
+    margin: 8rem 35rem;
+
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000;
+    border: 1px solid #000;
+    border-radius: 10px;
+    height: 100%;
+}
+.main:hover{
+  background-color: rgba(26, 11, 47, 0.2);
+}
+.main button
+{
+    /* width: 100%; */
+    margin: auto;
+    margin-top: 1rem;
+    height: 100%;
+    /* background-color: #ffe48a; */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    display: block;
+    padding: 0.5rem;
+}
+.main button:hover
+{
+    background-color: #43133e;
+    color: #ffffff;
+}
+
+
+
+
+/* ############################################################################### */
+#viewCust
+{
+    display: none;
+}
+.usdmodal { 
+    /* display: none; */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .usdcontent {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close1 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close1:hover,
+  .close1:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  #viewadmin
+{
+    display: none;
+}
+#addvoucher
+{
+    display: none;
+}

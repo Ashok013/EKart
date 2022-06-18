@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+ 
+
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kart!!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="resources/css/admin.css">
+    <script src="resources/js/admin.js"></script>
+    <script src="resources/js/sessionvalidate.js"></script>
+</head>
+<body background="resources/images/Admin2.jpg">
+    <div class="main">
+        <button data-toggle="modal" data-target="#itemadd"> Add new Item  </button>
+        <button data-toggle="modal" data-target="#adminadd"> Add new admin </button>
+        <button data-toggle="modal" data-target="#addcust"> Add Customer </button>
+        <button onclick="custmodal()"> View customers </button>
+        <button onclick="adminmodal()"> View Admins </button>
+        <button> View purchase details of all customers </button>
+        <button> View top 3 customers </button>
+        <button onclick="vouchermodal()">Add Vouchers</button>
+        <button>View Vouchers</button>
+        <button onclick="invalidate()">Logout</button>
+    </div>
+    <!-- Add a new item -->
+    <div id="itemadd" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Add Item</h4>
+            </div>
+            <div class="modal-body">
+              
+                <form id="item" class="form-group">
+                    <label for="name">Item name</label>
+                    <input type="text" id="name" name="name" required><br>
+                    <label for="price">Price</label>
+                    <input type="text" id="price" name="price" required><br>
+                    <label for="category">Category</label>
+                    <input type="text" id="category" name="category" required><br>
+                    <label for="quantity">quantity</label>
+                    <input type="text" id="quantity" name="quantity" required><br>
+                    <!-- <label for="image">Item Image</label>
+                    <input type="file"><br> -->
+                    <label id="error"></label><br>
+                    <button onclick="addItem()">
+                        Add
+                    </button>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+          <!-- Add Another Admin -->
+          <div id="adminadd" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Add Admin</h4>
+                </div>
+                <div class="modal-body">
+                        <form >
+                            <label for="fname"> First Name</label> 
+                                <input type="text" id="fname" name="fname" required><br>
+                            
+                            <label for="lname"> Last Name</label>
+                                
+                                <input type="text" id="lname" name="lname" required><br>
+                            <label for="email"> Email</label>
+                            
+                                    <input type="text" id="mailid" name="mailid" required><br>
+                            <label for="phno1">Phone Number 1</label>                                
+                                <input type="text" id="phno1" name="phno1" required><br>
+                            <label for="phno2">Phone Number 2</label>
+                                
+                                <input type="text" id="phno2" name="phno2" ><br>
+                            
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" required/> <br>         
+                            <label for="password">Password</label>
+                           <input type="password" id="password" name="password" required/><br>
+                            <label for="confirmpassword">Confirm Password</label>
+                            <input type="password" id="pwd1" name="pwd1" required/>  <br>              
+                            <label for="error" id="error"></label><br>
+                            <button onclick="valid()">Submit</button>
+                        </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+        </div>
+      </div>
+      
+      <!-- Add a new Customer -->
+      <div id="addcust" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Add User</h4>
+            </div>
+            <div class="modal-body">
+                    <form >
+                        <label for="fname1"> First Name</label> 
+                            <input type="text" id="fname1" name="fname1" required><br>
+                        
+                        <label for="lname1"> Last Name</label>
+                            
+                            <input type="text" id="lname1" name="lname1" required><br>
+                        <label for="mailid1"> Email</label>
+                        
+                                <input type="text" id="mailid1" name="mailid1" required><br>
+                        <label for="phno11">Phone Number 1</label>                                
+                            <input type="text" id="phno11" name="phno11" required><br>
+                        <label for="phno21">Phone Number 2</label>
+                            
+                            <input type="text" id="phno21" name="phno21" ><br>
+                        
+                        <label for="username1">Username</label>
+                        <input type="text" id="username1" name="username1" required/> <br>         
+                        <label for="password1">Password</label>
+                       <input type="password" id="password1" name="password1" required/><br>
+                        <label for="pwd1">Confirm Password</label>
+                        <input type="password" id="pwd11" name="pwd11" required/>  <br>              
+                        <label for="error" id="error1"></label><br>
+                        <button onclick="validuser()">Submit</button>
+                    </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+    </div>
+  </div>
+<!-- Get Customer Details -->
+  <div id="viewCust" class="usdmodal">
+
+  <div class="usdcontent">
+    <span class="close1">&times;</span>
+    <div id="tbl">
+      <table border="solid" class="tabl">
+          <thead>
+              <tr>
+                  <th>
+                      Customer ID
+                  </th>
+                  <th>
+                      First Name
+                  </th>
+                  <th>
+                      Last Name
+                  </th>
+                  <th>
+                      User Name   
+                  </th>
+                  <th>
+                      Email
+                  </th>
+                  <th>
+                      Phone
+                  </th>            
+              </tr>
+          </thead>
+          <tbody></tbody>
+      </table>
+   </div>
+  </div>
+
+</div>
+<!-- Get Admin Details -->
+<div id="viewadmin" class="usdmodal">
+
+  <div class="usdcontent">
+    <span class="close1">&times;</span>
+    <div id="tbl1">
+      <table border="solid" class="tabl">
+          <thead>
+              <tr>
+                  <th>
+                      Customer ID
+                  </th>
+                  <th>
+                      First Name
+                  </th>
+                  <th>
+                      Last Name
+                  </th>
+                  <th>
+                      User Name   
+                  </th>
+                  <th>
+                      Email
+                  </th>
+                  <th>
+                      Phone
+                  </th>            
+              </tr>
+          </thead>
+          <tbody></tbody>
+      </table>
+   </div>
+  </div>
+
+</div>  
+
+<!-- Add voucher  -->
+<div id="addvoucher" class="usdmodal">
+
+  <div class="usdcontent">
+    <span class="close1">&times;</span>
+    <div id="form">
+      <form>
+        <label for="voucher">Voucher Name</label>
+        <input type="text" id="vname" name="voucher" required><br>
+        <label for="discount">Discount Percent</label>
+        <input type="text" id="discount" name="discount" required><br>
+        <label for="quantity">Quantity</label>
+        <input type="text" id="vquantity" name="quantity" required><br>
+        <input type="submit" value="submit" onclick="addvouch()">
+        <!-- <button onclick="addvouch()">Submit</button> -->
+      </form>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

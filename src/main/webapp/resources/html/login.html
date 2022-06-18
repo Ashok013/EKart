@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Kartt!!</title>
+<link rel="stylesheet" href="resources/css/login.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body background="resources/images/Login1.jpg">
+	<table class="tab">
+		<form >
+			<tr>
+				<td>Username</td>
+				<td><input type="text" id="username" name="username" required/></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="password" id="password" name="password" required/></td>
+				
+			</tr>
+			<tr>
+				<td colspan="2" id="error"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><button onclick="validate()">Submit</button></td>
+			</tr>
+			<tr>
+				<td colspan="2">Create new account? <button onclick="signup()">Signup</button></td>
+			</tr>
+		</form>
+	</table>
+</body>
+</html>
+
+<script src="resources/js/validate.js"></script>

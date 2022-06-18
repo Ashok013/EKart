@@ -1,0 +1,30 @@
+body{
+   /* background-image: image('../images/cover.png'); */
+    /* background-color: #ffe48a; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+.tab
+{
+    background-color: rgb(73, 52, 119, 0.5);
+    color: aliceblue;
+    margin:auto;
+    margin-top: 8rem;
+    padding: 5rem;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 10px;
+}
+.tab:hover
+{
+    transition-delay: 0.1s;
+    box-shadow: slategray;
+    border: 3px solid slategray;
+    background-color: rgb(9,36,62);
+    color: aliceblue;
+}
+td
+{
+    padding: 7px;
+}

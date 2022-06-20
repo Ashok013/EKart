@@ -19,28 +19,23 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONObject;
 
 import ekart.getResultset;
-
-@WebServlet("/AddToCart")
-public class AddToCart extends HttpServlet {
+@WebServlet("/OrderDetails")
+public class OrderDetails extends HttpServlet {
 	static final String url="jdbc:mysql://localhost:3306/eshop";
 	static final String uname="root";
 	static final String pass="Ashok@669061";
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession s=request.getSession(true);
-		int name=(int)s.getAttribute("userid");
-		int id=Integer.parseInt(request.getParameter("id"));
-		int qty=Integer.parseInt(request.getParameter("qty"));
+		int name=(int)s.getAttribute("userid");		
 		try
 		{
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con=DriverManager.getConnection(url,uname,pass);
-		PreparedStatement p=con.prepareStatement("insert into cart values(?,?,?)");
-		p.setInt(1, name);
-		p.setInt(2, id);
-		p.setInt(3, qty);
-		p.executeUpdate();
-		JSONObject json=new JSONObject();
-		json.put("Success", "True");
+			Statement st=con.createStatement();
+			String q="select p.purchase_id,group_concat(i.name)as name,sum(i.price*o.quantity)as total,p.purchase_time from orders o join purchase p on (o.purchase_id=p.purchase_id and p.user_id="+name+") join items i on(o.item_id=i.item_id) group by p.purchase_id;";
+			ResultSet r=st.executeQuery(q);
+		List<JSONObject> json=getResultset.getJsonResultset(r);
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
@@ -52,5 +47,6 @@ public class AddToCart extends HttpServlet {
 			System.out.println(e);
 		}
 	}
+
 
 }

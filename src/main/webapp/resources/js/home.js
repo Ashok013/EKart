@@ -253,18 +253,42 @@ function addtocart(id)
         // console.log(name,price,qty);
         var id=item.id;
         console.log(name,price,qty,id);
-        $.ajax({
+        $.ajax(
+        {
             method:"post",
-            url:"http://localhost:8080/ekart/AddToCart",
+            url:"http://localhost:8080/ekart/ItemExist",
             data:{name:name,price:price,qty:qty,id:id},
             success:function(data)
             {
+                if(data.length==1)
+                {
+                    alert("Item Already exists in the cart");
+                }
+                else{
+                    $.ajax({
+                        method:"post",
+                        url:"http://localhost:8080/ekart/AddToCart",
+                        data:{name:name,price:price,qty:qty,id:id},
+                        success:function(data)
+                        {
+                            console.log(data);
+                            alert("Item added to cart Successfully");
+                            location.reload();
+                        }
+                    });
+                }
                 console.log(data);
             }
         });
+        
     }
     else
     {
         alert("You can't add 0 items");
     }
+}
+
+function gotoorders()
+{
+    window.location.href="http://localhost:8080/ekart/Order";
 }

@@ -6,28 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="resources/css/cart.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="resources/js/cart.js"></script>
     <title>Kart!!</title>
 </head>
 <body>
+    <div id="cart"></div>
     <table border="3" id="tbl">
         <thead>
         <tr>
             <th>Product</th>
             <th>Price</th>
-            <th>Quantity</th>
+            <th>Quantity/Unit</th>
             <th>Total</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <!-- <tr>
             <td>Product 1</td>
             <td>$10</td>
             <td>1</td>
             <td>$10</td>
-            <td class="btn"><i class="material-icons">edit</i></td>
-            <td class="btn"><i class="material-icons">delete</i></td>
+            <td class='btn'><i class='material-icons'>edit</i></td>
+            <td class='btn'><i class='material-icons'>delete</i></td>
         </tr>
         <tr>
             <td>Product 2</td>
@@ -44,8 +47,11 @@
             <td>$90</td>
             <td class="btn"><i class="material-icons">edit</i></td>
             <td class="btn"><i class="material-icons">delete</i></td>
-        </tr>
+        </tr> -->
     </tbody>
     </table>
+    <div id="total">
+    </div>
+    <div id="order"><button onclick="placeorder()">Place your order</button></div>
 </body>
 </html>

@@ -15,6 +15,8 @@ $.ajax(
 );
 function invalidate()
 {
+    var r=confirm("Are you sure you want to logout?");
+    if(r==true)
     $.ajax(
         {
             url: 'http://localhost:8080/ekart/Invalidate',

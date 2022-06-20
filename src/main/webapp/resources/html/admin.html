@@ -24,8 +24,8 @@
         <button onclick="adminmodal()"> View Admins </button>
         <button> View purchase details of all customers </button>
         <button> View top 3 customers </button>
-        <button onclick="vouchermodal()">Add Vouchers</button>
-        <button>View Vouchers</button>
+        <!-- <button onclick="vouchermodal()">Add Vouchers</button>
+        <button>View Vouchers</button> -->
         <button onclick="invalidate()">Logout</button>
     </div>
     <!-- Add a new item -->
@@ -219,7 +219,7 @@
 </div>  
 
 <!-- Add voucher  -->
-<div id="addvoucher" class="usdmodal">
+<!-- <div id="addvoucher" class="usdmodal">
 
   <div class="usdcontent">
     <span class="close1">&times;</span>
@@ -232,9 +232,45 @@
         <label for="quantity">Quantity</label>
         <input type="text" id="vquantity" name="quantity" required><br>
         <input type="submit" value="submit" onclick="addvouch()">
-        <!-- <button onclick="addvouch()">Submit</button> -->
+        
       </form>
     </div>
+  </div>
+
+</div> -->
+
+<!-- Get Customers Purchase Details -->
+<div id="viewpurchase" class="usdmodal">
+
+  <div class="usdcontent">
+    <span class="close1">&times;</span>
+    <div id="tbl">
+      <table border="solid" class="tabl">
+          <thead>
+              <tr>
+                  <th>
+                      Customer ID
+                  </th>
+                  <th>
+                      First Name
+                  </th>
+                  <th>
+                      Last Name
+                  </th>
+                  <th>
+                      User Name   
+                  </th>
+                  <th>
+                      Email
+                  </th>
+                  <th>
+                      Phone
+                  </th>            
+              </tr>
+          </thead>
+          <tbody></tbody>
+      </table>
+   </div>
   </div>
 
 </div>

@@ -27,6 +27,15 @@
     <url-pattern>/Cart</url-pattern>
   </servlet-mapping>
 
+   <servlet>
+    <servlet-name>Order</servlet-name>
+    <jsp-file>/resources/html/orders.html</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Order</servlet-name>
+    <url-pattern>/Order</url-pattern>
+  </servlet-mapping>
+
   <servlet>
     <servlet-name>Signup</servlet-name>
     <jsp-file>/resources/html/signup.html</jsp-file>

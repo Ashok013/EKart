@@ -345,52 +345,52 @@ function vouchermodal()
 
 
 
-function addvouch()
-{
-    event.preventDefault();
-    var vname = document.getElementById("vname");
-    var vdisc = document.getElementById("discount");
-    var vquantity = document.getElementById("vquantity");
-    console.log(vdisc);
-    console.log(vquantity);
-    $.ajax(
-        {
-            type: "POST",
-            url: "http://localhost:8080/ekart/VoucherValid",
-            data: {
-                name: vname.value
-            },
-            success: function(data) {
-                console.log(data);
-                if(data.length==1)
-                {
-                    alert("Voucher already exists ");
-                }
-                else
-                {
-                    $.ajax(
-                        {
-                            type: "POST",
-                            url: "http://localhost:8080/ekart/AddVoucher",
-                            data: {
-                                name: vname.value,
-                                discount: vdisc.value,
-                                quantity: vquantity.value
-                            },
-                            success: function(data) {
-                                console.log("hello");
-                                // alert(data);
-                                console.log(data);
-                                alert("Voucher added successfully");
-                                var modal = document.getElementById("addvoucher");
-                                modal.style.display = "none";
-                            }
-                        }
-                    );
+// function addvouch()
+// {
+//     event.preventDefault();
+//     var vname = document.getElementById("vname");
+//     var vdisc = document.getElementById("discount");
+//     var vquantity = document.getElementById("vquantity");
+//     console.log(vdisc);
+//     console.log(vquantity);
+//     $.ajax(
+//         {
+//             type: "POST",
+//             url: "http://localhost:8080/ekart/VoucherValid",
+//             data: {
+//                 name: vname.value
+//             },
+//             success: function(data) {
+//                 console.log(data);
+//                 if(data.length==1)
+//                 {
+//                     alert("Voucher already exists ");
+//                 }
+//                 else
+//                 {
+//                     $.ajax(
+//                         {
+//                             type: "POST",
+//                             url: "http://localhost:8080/ekart/AddVoucher",
+//                             data: {
+//                                 name: vname.value,
+//                                 discount: vdisc.value,
+//                                 quantity: vquantity.value
+//                             },
+//                             success: function(data) {
+//                                 console.log("hello");
+//                                 // alert(data);
+//                                 console.log(data);
+//                                 alert("Voucher added successfully");
+//                                 var modal = document.getElementById("addvoucher");
+//                                 modal.style.display = "none";
+//                             }
+//                         }
+//                     );
 
-                }
-            }
-        }
-    );
+//                 }
+//             }
+//         }
+//     );
   
-}
+// }

@@ -1,3 +1,14 @@
+
+window.onload=function getCategory() {
+    $(".navbar").load("resources/html/navbar.html");
+    setTimeout(loadlistener,100);
+}
+
+function loadlistener()
+{
+    document.getElementById("c").style.display="none";
+    document.getElementById("hme").addEventListener("click",gotohome);
+}
 function invalidate()
 {
     var r=confirm("Are you sure you want to logout?");
@@ -19,7 +30,6 @@ $.ajax(
         type: "GET",
         dataType: "json",
         success: function (data) {
-            console.log(data);
             if(data.length==0)
             {
                 $("#order").html("<h3>No Orders Yet</h3>");

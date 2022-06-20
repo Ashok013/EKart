@@ -7,7 +7,6 @@ $.ajax(
         success: function(data) {
             if(!crole.startsWith(data))
             {
-                console.log(data);
                 window.location.replace(data);
             }
         }

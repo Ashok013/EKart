@@ -1,11 +1,13 @@
+
 window.onload=function getCategory() {
+    $(".navbar").load("resources/html/navbar.html");
     getData(1,"All");
-    console.log("Hii from onload");
     $.ajax({
         url: 'http://localhost:8080/ekart/GetCategory',
         type: 'GET',
         success: function(data) {
-            console.log(data);
+            document.getElementById("hme").addEventListener("click",callgetData);
+            
             var x=document.getElementById("category");
             for(var i=0;i<data.length;i++)
             {
@@ -20,18 +22,10 @@ let rownum=1;
 let flag=1;
 let itemq={};
 window.onscroll=(function() {
-    console.log($(document).height()-$(window).height());
-    console.log(Math.round($(window).scrollTop()));
-    // console.log("in");
-    console.log("GetData Rownum: "+rownum);
-    console.log("GetData Flag: "+flag);
-    console.log("in1");
     if(flag==1)
     if(Math.round($(window).scrollTop()) == ($(document).height()-$(window).height())) {
-        console.log("in12");
         rownum++;
         var category = $("#category").val();
-        console.log("Hi from scroll");
         getData(rownum,category);
         
     }
@@ -43,16 +37,12 @@ function gotocart()
 }
 
 function categoryfind() {
-    // window.scrollTo(0,0);
-    // console.log("Scrolled to top");
     window.scrollTo(0,0);
-    console.log("Scrolled to top");
     window.setTimeout(c1,10);
 }
 function callgetData()
 {
     window.scrollTo(0,0);
-    console.log("Scrolled to top");
     window.setTimeout(c2,10);
     $("#category option:selected").attr("selected","none");
     $("#category").val("All");
@@ -65,20 +55,14 @@ function c2() {
     flag=1;
     var main=document.getElementById("main");
     main.innerHTML="";
-    console.log("Hi from callgetData");
     getData(1,"All");
 }
 function c1() {
     rownum=1;
     flag=1;
-    console.log("Category find : rownum : "+rownum);
-    console.log("Category find : flag : "+flag);
-    var category = $("#category").val();
-    console.log(category);
-    
+    var category = $("#category").val();    
     var main=document.getElementById("main");
     main.innerHTML="";
-    console.log("Hi from category find");
     getData(1,category);
 }
 
@@ -87,14 +71,12 @@ function addq(id)
 {
     var x=document.getElementById(id).childNodes[2].childNodes[1].childNodes[1];
     // x.style.display="block";
-    console.log(x);
     if(itemq.hasOwnProperty(id)&&(itemq[id]> +x.innerHTML))
     {
         x.innerHTML=+(x.innerHTML)+1;
     }
     else if(itemq[id]<= +x.innerHTML)
     {
-        console.log(itemq[id]+"  "+x.innerHTML);
         alert("You can't add more than Available items");
     }
     else
@@ -106,17 +88,13 @@ function addq(id)
                 id: id,
             },
             success: function(data) {
-                // console.log(data);
                 itemq[id]=data[id];
-                // console.log(itemq);
                 if(itemq[id]> +x.innerHTML)
                 {
                     x.innerHTML=+(x.innerHTML)+1;
                 }
                 else if(itemq[id]<= +(x.innerHTML))
                 {
-                    console.log("Hlo");
-                    console.log(itemq[id]+"  "+x.innerHTML);
                     alert("You can't add more than Available items");
                 }
             }
@@ -126,9 +104,7 @@ function addq(id)
 }
 
 function subq(id) {
-    console.log(id);
     var x=document.getElementById(id).childNodes[2].childNodes[1].childNodes[1];
-    console.log(x);
     if(+x.innerHTML>0)
     {
         x.innerHTML=+(x.innerHTML)-1;
@@ -137,14 +113,12 @@ function subq(id) {
 
 function getData(row,val)
 {
-    console.log(row,val);
     $.ajax({
         method:"post",
         url:"http://localhost:8080/ekart/GetItems",
         data:{rownum:row,category:val},
         success:function(data)
         {
-            console.log(data);
             if(data.length==0)
             {
                 flag=0;
@@ -154,7 +128,6 @@ function getData(row,val)
                 for(var i=0;i<data.length;i++)
                 {
                     var main=document.getElementById("main");
-                    console.log(main);
                     // var x="<div class='section1'><div class='card'><img src='../images/card.jpg' alt='Supermarket'></div><div class='itm'><div class='minus'>-</div><div class='product'>"+data[i]["NAME"]+"</div><div class='plus'>+</div></div><div class='Price'>Price: Rs."+data[i]["PRICE"]+"</div><div class='btn'><button >ADD TO CART</button></div></div>";
                     // main.insertAdjacentHTML("beforeend",x);
                     var sections=document.createElement("div");
@@ -239,21 +212,15 @@ function getData(row,val)
 }
 function addtocart(id)
 {
-    console.log(id);
     var x=document.getElementById(id).childNodes[2].childNodes[1].childNodes[1];
-    console.log(x);
     var qty=+x.innerHTML;
-    console.log(qty);
     if(qty>0)
     {
         var item=document.getElementById(id);
         var name=item.childNodes[1].childNodes[1].innerHTML;
         var price=item.childNodes[3].innerHTML;
-        console.log(item.childNodes[2]);
         var qty=item.childNodes[2].childNodes[1].childNodes[1].innerHTML;
-        // console.log(name,price,qty);
         var id=item.id;
-        console.log(name,price,qty,id);
         $.ajax(
         {
             method:"post",
@@ -272,13 +239,11 @@ function addtocart(id)
                         data:{name:name,price:price,qty:qty,id:id},
                         success:function(data)
                         {
-                            console.log(data);
                             alert("Item added to cart Successfully");
                             location.reload();
                         }
                     });
                 }
-                console.log(data);
             }
         });
         

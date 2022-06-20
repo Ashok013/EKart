@@ -20,22 +20,16 @@ function validate()
             password: password.value
         },
         success: function(data) {
-            console.log(data);
             if(data.length==0)
             {
-                console.log("HI");
                 valid = false;
                 errorMessage += "Invalid username ";
             }
             else if(data[0]["PASSWORD"]!=password.value)
             {
-                console.log("Hello");
-                console.log(data[0]["PASSWORD"]);
-                console.log(password.value);
                 valid = false;
                 errorMessage += "Invalid password ";
             }
-            console.log("HI");
             
     if (valid == false)
     {
@@ -62,7 +56,6 @@ function signup()
 function valid()
 {
     event.preventDefault();
-    console.log("Jello");
     var fname=document.getElementById("fname");
     var lname=document.getElementById("lname");
     var name = document.getElementById("username");
@@ -100,7 +93,6 @@ function valid()
         errorMessage += "Enter valid phone number ";
         valid = false;
     }
-    console.log(list);
     if(password.value!=pwd1.value)
     {
         valid = false;
@@ -119,7 +111,6 @@ function valid()
                 username: name.value,
             },
             success: function(data) {
-                console.log(data);
                 if(data.length==1)
                 {
                     valid = false;
@@ -137,7 +128,7 @@ function valid()
                             url: "http://localhost:8080/ekart/Signup",
                             data: list,
                             success: function(data) {
-                                console.log(data);
+ 
                             }
                         }
                     );

@@ -1,22 +1,14 @@
 function custmodal()
 {
-    console.log("HI");
     var modal = document.getElementById("viewCust");
-    console.log(modal);
     $.ajax(
         {
             type: "GET",
             url: "http://localhost:8080/ekart/GetCustomers",
             success: function(data) {
-                console.log("Hello");
-                console.log(data);
                 var table = $("#tbl tbody");
-                //table.innerHTML="";
-                // var table = document.createElement("table");
-                // console.log(table);
                 for(var i=0;i<data.length;i++)
                 {
-                    console.log(data[i]);
                    var x="<tr><td>"+data[i]["USER_ID"]+"</td><td>"+data[i]["FIRSTNAME"]+"</td><td>"+data[i]["LASTNAME"]+"</td><td>"+data[i]["USERNAME"]+"</td><td>"+data[i]["MAIL"]+"</td><td>"+data[i]["PHONE"]+"</td></tr>";
                      table.append(x);
                      modal.style.display = "block";
@@ -27,12 +19,10 @@ function custmodal()
     
     var span = document.getElementsByClassName("close1")[0];
     span.onclick = function() {
-        console.log("Out");
         $("#tbl tbody tr").remove();
         modal.style.display = "none";
     }
     window.onclick = function(event) {
-        console.log("Out");
         if (event.target == modal) {
             $("#tbl tbody tr").remove();
             modal.style.display = "none";
@@ -55,15 +45,9 @@ function adminmodal()
             type: "GET",
             url: "http://localhost:8080/ekart/GetAdminDetails",
             success: function(data) {
-                console.log("Hello");
-                console.log(data);
                 var table = $("#tbl1 tbody");
-                //table.innerHTML="";
-                // var table = document.createElement("table");
-                // console.log(table);
                 for(var i=0;i<data.length;i++)
                 {
-                    console.log(data[i]);
                    var x="<tr><td>"+data[i]["USER_ID"]+"</td><td>"+data[i]["FIRSTNAME"]+"</td><td>"+data[i]["LASTNAME"]+"</td><td>"+data[i]["USERNAME"]+"</td><td>"+data[i]["MAIL"]+"</td><td>"+data[i]["PHONE"]+"</td></tr>";
                      table.append(x);
                 }
@@ -124,7 +108,6 @@ function valid()
         errorMessage += "Enter valid phone number ";
         valid = false;
     }
-    console.log(list);
     if(password.value!=pwd1.value)
     {
         valid = false;
@@ -143,7 +126,6 @@ function valid()
                 username: name.value,
             },
             success: function(data) {
-                console.log(data);
                 if(data.length==1)
                 {
                     valid = false;
@@ -161,7 +143,6 @@ function valid()
                             url: "http://localhost:8080/ekart/AddAdmin",
                             data: list,
                             success: function(data) {
-                                console.log(data);
                             }
                         }
                     );
@@ -217,7 +198,6 @@ function validuser()
         errorMessage += "Enter valid phone number ";
         valid = false;
     }
-    console.log(list);
     if(password.value!=pwd1.value)
     {
         valid = false;
@@ -236,7 +216,6 @@ function validuser()
                 username: name.value,
             },
             success: function(data) {
-                console.log(data);
                 if(data.length==1)
                 {
                     valid = false;
@@ -254,7 +233,6 @@ function validuser()
                             url: "http://localhost:8080/ekart/Signup",
                             data: list,
                             success: function(data) {
-                                console.log(data);
                             }
                         }
                     );
@@ -289,7 +267,6 @@ function addItem()
                 name: name.value
             },
             success: function(data) {
-                console.log(data);
                 if(data.length==1)
                 {
                     valid = false;
@@ -312,7 +289,6 @@ function addItem()
                                 category: category.value
                             },
                             success: function(data) {
-                                console.log(data);
                                 alert("Item added successfully");
                             }
                         }
@@ -343,54 +319,3 @@ function vouchermodal()
 }
 
 
-
-
-// function addvouch()
-// {
-//     event.preventDefault();
-//     var vname = document.getElementById("vname");
-//     var vdisc = document.getElementById("discount");
-//     var vquantity = document.getElementById("vquantity");
-//     console.log(vdisc);
-//     console.log(vquantity);
-//     $.ajax(
-//         {
-//             type: "POST",
-//             url: "http://localhost:8080/ekart/VoucherValid",
-//             data: {
-//                 name: vname.value
-//             },
-//             success: function(data) {
-//                 console.log(data);
-//                 if(data.length==1)
-//                 {
-//                     alert("Voucher already exists ");
-//                 }
-//                 else
-//                 {
-//                     $.ajax(
-//                         {
-//                             type: "POST",
-//                             url: "http://localhost:8080/ekart/AddVoucher",
-//                             data: {
-//                                 name: vname.value,
-//                                 discount: vdisc.value,
-//                                 quantity: vquantity.value
-//                             },
-//                             success: function(data) {
-//                                 console.log("hello");
-//                                 // alert(data);
-//                                 console.log(data);
-//                                 alert("Voucher added successfully");
-//                                 var modal = document.getElementById("addvoucher");
-//                                 modal.style.display = "none";
-//                             }
-//                         }
-//                     );
-
-//                 }
-//             }
-//         }
-//     );
-  
-// }

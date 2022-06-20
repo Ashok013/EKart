@@ -1,3 +1,15 @@
+
+window.onload=function getCategory() {
+    $(".navbar").load("resources/html/navbar.html");
+    setTimeout(loadlistener,100);
+}
+
+function loadlistener()
+{
+    document.getElementById("c").style.display="none";
+    document.getElementById("hme").addEventListener("click",gotohome);
+}
+
 $.ajax(
 
     {
@@ -5,7 +17,9 @@ $.ajax(
         type: "GET",
         dataType: "json",
         success: function (data) {
-            console.log(data);
+            // $(".navbar").load("resources/html/navbar.html");
+
+
             if(data.length==0)
             {
                 $("#cart").html("<h3>No items in cart</h3>");
@@ -41,13 +55,7 @@ function deletefromcart(id,event) {
     var r=confirm("Are you sure you want to delete this item?");
     if(r==true)
     {
-        // var tr=$(this).closest("tr");
-        // console.log(tr);
-        // var id=tr.attr("id");
-        console.log(id);
-        // var x=event.target;
-        // console.log(x);
-        // alert($(this).closest("tr").attr("attr"));
+        
         $.ajax(
             {
                 url: "http://localhost:8080/ekart/DeleteFromCart",
@@ -55,7 +63,7 @@ function deletefromcart(id,event) {
                 data: {itemid:id},
                 dataType: "json",
                 success: function (data) {
-                    console.log(data);
+                    
                     location.reload();
                 }
             }
@@ -75,7 +83,7 @@ function placeorder() {
                 type: "get",
                 dataType: "json",
                 success: function (data) {
-                    console.log(data);
+                    
                     location.reload();
                 }
             }

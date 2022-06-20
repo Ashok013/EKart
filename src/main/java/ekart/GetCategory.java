@@ -32,7 +32,7 @@ public class GetCategory extends HttpServlet {
 			Statement st=con.createStatement();
 			response.setContentType("text/html");
 		    PrintWriter out = response.getWriter();
-		    String q="select distinct(category) from items order by category asc;";
+		    String q="select category_name from category;";
 			ResultSet r=st.executeQuery(q);
 			List<JSONObject> json1=getResultset.getJsonResultset(r);
 			//System.out.print(json1);

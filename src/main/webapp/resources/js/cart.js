@@ -27,9 +27,9 @@ $.ajax(
             var total=0;
             for(var i=0;i<data.length;i++)
             {
-                var row="<tr><td>"+data[i]["NAME"]+"</td><td>"+data[i]["PRICE"]+"</td><td>"+data[i]["QUANTITY"]+"</td><td>"+data[i]["PRICE"]*data[i]["QUANTITY"]+"</td><td class='btn'><i class='material-icons'>edit</i></td><td class='btn' onclick='deletefromcart("+data[i]['ITEM_ID']+")'><i class='material-icons'>delete</i></td></tr>";
+                var row="<tr><td>"+data[i]["NAME"]+"</td><td>"+data[i]["PRICE"]+"</td><td>"+data[i]["QUANTITY"]+"</td><td>"+data[i]["ORQUANTITY"]+"</td><td>"+data[i]["PRICE"]*data[i]["ORQUANTITY"]+"</td><td class='btn'><i class='material-icons'>edit</i></td><td class='btn' onclick='deletefromcart("+data[i]['ITEM_ID']+")'><i class='material-icons'>delete</i></td></tr>";
                 table.append(row);
-                total+=data[i]["PRICE"]*data[i]["QUANTITY"];
+                total+=data[i]["PRICE"]*data[i]["ORQUANTITY"];
             }
             totl.html("Total: Rs."+total);
         }
@@ -81,4 +81,30 @@ function placeorder() {
             }
         );
     }
+}
+function gotoorders()
+{
+    window.location.href="http://localhost:8080/ekart/Order";
+}
+function gotocart()
+{
+    location.assign("http://localhost:8080/ekart/Cart");
+}
+function gotohome()
+{
+    location.assign("http://localhost:8080/ekart/Customer");
+}
+function invalidate()
+{
+    var r=confirm("Are you sure you want to logout?");
+    if(r==true)
+    $.ajax(
+        {
+            url: 'http://localhost:8080/ekart/Invalidate',
+            type: 'GET',
+            success: function(data) {
+                window.location.replace(data);
+            }
+        }
+    );
 }

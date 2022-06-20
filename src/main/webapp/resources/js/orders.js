@@ -1,3 +1,17 @@
+function invalidate()
+{
+    var r=confirm("Are you sure you want to logout?");
+    if(r==true)
+    $.ajax(
+        {
+            url: 'http://localhost:8080/ekart/Invalidate',
+            type: 'GET',
+            success: function(data) {
+                window.location.replace(data);
+            }
+        }
+    );
+}
 $.ajax(
 
     {
@@ -32,3 +46,16 @@ $.ajax(
         }
     }
 );
+function gotoorders()
+{
+    window.location.href="http://localhost:8080/ekart/Order";
+}
+function gotocart()
+{
+    location.assign("http://localhost:8080/ekart/Cart");
+}
+function gotohome()
+{
+    location.assign("http://localhost:8080/ekart/Customer");
+}
+

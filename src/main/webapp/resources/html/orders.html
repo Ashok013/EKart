@@ -6,10 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kart!! </title>
     <link rel="stylesheet" href="resources/css/orders.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="resources/js/orders.js"></script>
+    <link rel="stylesheet" href="resources/css/home.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- <script src="resources/js/sessionvalidate.js"></script> -->
+<!-- <script src="resources/js/home.js"></script> -->
 </head>
 <body>
+    <div class="top">
+        <header><b>Kart!!</b></header>
+    </div>
+    <div class="navbar" >
+        <div>
+            <span onclick="gotohome()"><i class="material-icons">home</i>Home</span>
+            <span><i class="material-icons">info</i>About</span>
+        </div>
+        <div>
+            <span onclick="gotocart()"><i class="material-icons">shopping_cart</i>Cart</span>
+            <span onclick="gotoorders()"><i class="material-icons">list_alt</i>Orders</span>
+            <span onclick="invalidate()"><i class="material-icons">logout</i>Logout</span>
+        </div>
+    </div>
     <div id="order"></div>
     <table id="tbl" border="1px">
         <thead>
@@ -21,8 +37,10 @@
             </tr>
         </thead>
         <tbody>
-
+            
         </tbody>
     </table>
 </body>
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="resources/js/orders.js"></script>

@@ -6,48 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="resources/css/cart.css">
+    <link rel="stylesheet" href="resources/css/home.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="resources/js/cart.js"></script>
+    <!-- <script src="resources/js/sessionvalidate.js"></script> -->
+<!-- <script src="resources/js/home.js"></script> -->
     <title>Kart!!</title>
 </head>
 <body>
+    <div class="top">
+        <header><b>Kart!!</b></header>
+    </div>
+    <div class="navbar" >
+        <div>
+            <span onclick="gotohome()"><i class="material-icons">home</i>Home</span>
+            <span><i class="material-icons">info</i>About</span>
+        </div>
+        <div>
+            <span onclick="gotocart()"><i class="material-icons">shopping_cart</i>Cart</span>
+            <span onclick="gotoorders()"><i class="material-icons">list_alt</i>Orders</span>
+            <span onclick="invalidate()"><i class="material-icons">logout</i>Logout</span>
+        </div>
+    </div>
     <div id="cart"></div>
     <table border="3" id="tbl">
         <thead>
         <tr>
             <th>Product</th>
             <th>Price</th>
-            <th>Quantity/Unit</th>
+            <th>Available Quantity</th>
+            <th>Quantity Added/Unit</th>
             <th>Total</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
     </thead>
     <tbody>
-        <!-- <tr>
-            <td>Product 1</td>
-            <td>$10</td>
-            <td>1</td>
-            <td>$10</td>
-            <td class='btn'><i class='material-icons'>edit</i></td>
-            <td class='btn'><i class='material-icons'>delete</i></td>
-        </tr>
-        <tr>
-            <td>Product 2</td>
-            <td>$20</td>
-            <td>2</td>
-            <td>$40</td>
-            <td class="btn"><i class="material-icons">edit</i></td>
-            <td class="btn"><i class="material-icons">delete</i></td>
-        </tr>
-        <tr>
-            <td>Product 3</td>
-            <td>$30</td>
-            <td>3</td>
-            <td>$90</td>
-            <td class="btn"><i class="material-icons">edit</i></td>
-            <td class="btn"><i class="material-icons">delete</i></td>
-        </tr> -->
     </tbody>
     </table>
     <div id="total">

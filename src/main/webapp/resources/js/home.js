@@ -1,3 +1,21 @@
+window.onload=function getCategory() {
+    getData(1,"All");
+    console.log("Hii from onload");
+    $.ajax({
+        url: 'http://localhost:8080/ekart/GetCategory',
+        type: 'GET',
+        success: function(data) {
+            console.log(data);
+            var x=document.getElementById("category");
+            for(var i=0;i<data.length;i++)
+            {
+                var y=document.createElement("option");
+                y.innerHTML=data[i]["CATEGORY_NAME"];
+                x.appendChild(y);
+            }
+        }
+    });
+}
 let rownum=1;
 let flag=1;
 let itemq={};
@@ -23,36 +41,19 @@ function gotocart()
 {
     location.assign("http://localhost:8080/ekart/Cart");
 }
-window.onload=function getCategory() {
-    getData(1,"All");
-    console.log("Hii from onload");
-    $.ajax({
-        url: 'http://localhost:8080/ekart/GetCategory',
-        type: 'GET',
-        success: function(data) {
-            console.log(data);
-            var x=document.getElementById("category");
-            for(var i=0;i<data.length;i++)
-            {
-                var y=document.createElement("option");
-                y.innerHTML=data[i]["CATEGORY"];
-                x.appendChild(y);
-            }
-        }
-    });
-}
+
 function categoryfind() {
     // window.scrollTo(0,0);
     // console.log("Scrolled to top");
     window.scrollTo(0,0);
     console.log("Scrolled to top");
-    window.setTimeout(c1,100);
+    window.setTimeout(c1,10);
 }
 function callgetData()
 {
     window.scrollTo(0,0);
     console.log("Scrolled to top");
-    window.setTimeout(c2,100);
+    window.setTimeout(c2,10);
     $("#category option:selected").attr("selected","none");
     $("#category").val("All");
      

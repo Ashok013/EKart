@@ -33,7 +33,7 @@ public class CartDetails extends HttpServlet {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con=DriverManager.getConnection(url,uname,pass);
 			Statement st=con.createStatement();
-			String q="select i.item_id,i.name,i.quantity as available,i.price,c.quantity from items i join cart c on (i.item_id=c.item_id and c.user_id="+name+");";
+			String q="select i.item_id,i.name,i.quantity ,i.price,c.orquantity from items i join cart c on (i.item_id=c.item_id and c.user_id="+name+");";
 			ResultSet r=st.executeQuery(q);
 		List<JSONObject> json=getResultset.getJsonResultset(r);
 		response.setContentType("application/json");

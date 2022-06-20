@@ -45,18 +45,30 @@ public class PlaceOrder extends HttpServlet {
 				ResultSet r=st.executeQuery(q);
 				r.next();
 				int pid=r.getInt(1);
-				String q1="select item_id,quantity from cart where user_id = "+name+";";
+				String q1="select item_id,orquantity from cart where user_id = "+name+";";
 				r=st.executeQuery(q1);
 				while(r.next())
 				{
+					System.out.println("Hi");
 					PreparedStatement p1=con.prepareStatement("insert into orders(purchase_id,item_id,quantity) values(?,?,?)");
 					p1.setInt(1, pid);
 					p1.setInt(2, r.getInt(1));
 					p1.setInt(3, r.getInt(2));
 					p1.executeUpdate();
 				}
+				String q3="select i.item_id,i.quantity ,c.orquantity from items i join cart c on (i.item_id=c.item_id and c.user_id="+name+");";
+				r=st.executeQuery(q3);
+				while(r.next())
+				{
+					System.out.println("updating");
+					Statement st1=con.createStatement();
+					String update="update items set quantity ="+(r.getInt(2)-r.getInt(3))+" where item_id="+r.getInt(1)+";";
+					st1.executeUpdate(update);
+//					PreparedStatement p2=con.prepareStatement("update items ")
+				}
 				String q2="delete from cart where user_id = "+name+";";
 				st.executeUpdate(q2);
+				
 			JSONObject json=new JSONObject();
 			json.put("Success", "true");
 			response.setContentType("application/json");

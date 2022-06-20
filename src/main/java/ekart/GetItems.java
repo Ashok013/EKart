@@ -45,15 +45,19 @@ public class GetItems extends HttpServlet {
 			System.out.println(cat);
 			if(cat==null||cat.equals("All"))
 			{
-				System.out.println("Haii");
+			System.out.println("Haii");
 			q="select * from item where num>="+((rownum-1)*offset+1)+" and num<="+rownum*offset+";";
 			r=st.executeQuery(q);}
 			else
 			{
-			stmt=con.prepareStatement("select * from (select *,Row_number() over(order by item_id) as num from items where category = ?) s  having num>=? and num < ? ;");
+				String q1="select category_id from category where category_name = '"+cat+"';";
+				r=st.executeQuery(q1);
+				r.next();
+				int cid=r.getInt(1);
+			stmt=con.prepareStatement("select * from (select *,Row_number() over(order by item_id) as num from items where category_id = ?) s  having num>=? and num < ? ;");
 			stmt.setInt(2, (rownum-1)*offset+1);
 			stmt.setInt(3,rownum*offset);
-			stmt.setString(1,cat);
+			stmt.setInt(1,cid);
 			r=stmt.executeQuery();
 			}
 			List<JSONObject> json1=getResultset.getJsonResultset(r);

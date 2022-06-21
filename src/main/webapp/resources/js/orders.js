@@ -1,7 +1,7 @@
 
 window.onload=function getCategory() {
     $(".navbar").load("resources/html/navbar.html");
-    setTimeout(loadlistener,100);
+    setTimeout(loadlistener,10);
 }
 
 function loadlistener()

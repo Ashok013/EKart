@@ -1,7 +1,7 @@
 
 window.onload=function getCategory() {
     $(".navbar").load("resources/html/navbar.html");
-    setTimeout(loadlistener,100);
+    setTimeout(loadlistener,10);
 }
 
 function loadlistener()
@@ -63,8 +63,8 @@ function deletefromcart(id,event) {
                 data: {itemid:id},
                 dataType: "json",
                 success: function (data) {
-                    
                     location.reload();
+                    // alert("Item deleted successfully");
                 }
             }
         );
@@ -83,7 +83,7 @@ function placeorder() {
                 type: "get",
                 dataType: "json",
                 success: function (data) {
-                    
+                    alert("Order placed successfully");
                     location.reload();
                 }
             }
